@@ -82,7 +82,7 @@ macro_rules! elf_compression_header_std_impl {
     };
 }
 
-#[cfg(feature = "alloc")]
+#[cfg(feature = "alloc_user")]
 use scroll::{Pread, Pwrite, SizeWith};
 
 pub mod compression_header32 {
@@ -90,7 +90,7 @@ pub mod compression_header32 {
 
     #[repr(C)]
     #[derive(Copy, Clone, Eq, PartialEq, Default)]
-    #[cfg_attr(feature = "alloc", derive(Pread, Pwrite, SizeWith))]
+    #[cfg_attr(feature = "alloc_user", derive(Pread, Pwrite, SizeWith))]
     /// The compression header is used at the start of SHF_COMPRESSED sections
     pub struct CompressionHeader {
         /// Compression format
@@ -125,7 +125,7 @@ pub mod compression_header64 {
 
     #[repr(C)]
     #[derive(Copy, Clone, Eq, PartialEq, Default)]
-    #[cfg_attr(feature = "alloc", derive(Pread, Pwrite, SizeWith))]
+    #[cfg_attr(feature = "alloc_user", derive(Pread, Pwrite, SizeWith))]
     /// The compression header is used at the start of SHF_COMPRESSED sections
     pub struct CompressionHeader {
         /// Compression format

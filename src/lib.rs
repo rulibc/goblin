@@ -80,7 +80,7 @@
 #[cfg(feature = "std")]
 extern crate core;
 
-#[cfg(feature = "alloc")]
+#[cfg(feature = "alloc_user")]
 #[macro_use]
 extern crate alloc;
 
@@ -99,12 +99,12 @@ macro_rules! if_std {
 #[allow(unused)]
 macro_rules! if_alloc {
     ($($i:item)*) => ($(
-        #[cfg(feature = "alloc")]
+        #[cfg(feature = "alloc_user")]
         $i
     )*)
 }
 
-#[cfg(feature = "alloc")]
+#[cfg(feature = "alloc_user")]
 pub mod error;
 
 pub mod strtab;

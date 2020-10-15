@@ -6,7 +6,7 @@ macro_rules! elf_section_header {
         #[repr(C)]
         #[derive(Copy, Clone, Eq, PartialEq, Default)]
         #[cfg_attr(
-            feature = "alloc",
+            feature = "alloc_user",
             derive(scroll::Pread, scroll::Pwrite, scroll::SizeWith)
         )]
         /// Section Headers are typically used by humans and static linkers for additional information or how to relocate the object

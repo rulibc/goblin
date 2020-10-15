@@ -342,7 +342,7 @@ macro_rules! elf_program_header_std_impl { ($size:ty) => {
     } // end if_alloc
 };}
 
-#[cfg(feature = "alloc")]
+#[cfg(feature = "alloc_user")]
 use scroll::{Pread, Pwrite, SizeWith};
 
 pub mod program_header32 {
@@ -350,7 +350,7 @@ pub mod program_header32 {
 
     #[repr(C)]
     #[derive(Copy, Clone, PartialEq, Default)]
-    #[cfg_attr(feature = "alloc", derive(Pread, Pwrite, SizeWith))]
+    #[cfg_attr(feature = "alloc_user", derive(Pread, Pwrite, SizeWith))]
     /// A 32-bit ProgramHeader typically specifies how to map executable and data segments into memory
     pub struct ProgramHeader {
         /// Segment type
@@ -384,7 +384,7 @@ pub mod program_header64 {
 
     #[repr(C)]
     #[derive(Copy, Clone, PartialEq, Default)]
-    #[cfg_attr(feature = "alloc", derive(Pread, Pwrite, SizeWith))]
+    #[cfg_attr(feature = "alloc_user", derive(Pread, Pwrite, SizeWith))]
     /// A 64-bit ProgramHeader typically specifies how to map executable and data segments into memory
     pub struct ProgramHeader {
         /// Segment type

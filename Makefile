@@ -25,7 +25,7 @@ example:
 api:
 	cargo build
 	cargo build --no-default-features
-	cargo build --no-default-features --features="alloc"
+	cargo build --no-default-features --features="alloc_user"
 	cargo build --no-default-features --features="std"
 	cargo build --no-default-features --features="endian_fd"
 	cargo build --no-default-features --features="endian_fd std"

@@ -28,6 +28,9 @@ repository = "https://github.com/m4b/goblin"
 description = "An impish, cross-platform, ELF, Mach-o, and PE binary parsing and loading crate"
 
 [dependencies]
+compiler_builtins = {version = "0.1", optional = true}
+core = {version = "1.0", optional = true, package = "rustc-std-workspace-core"}
+alloc = {version = "1.0", optional = true, package = "rustc-std-workspace-alloc"}
 plain = "0.2.3"
 
 [dependencies.log]
@@ -36,22 +39,23 @@ default-features = false
 optional = true
 
 [dependencies.scroll]
-version = "0.10"
+version = "0.10.1"
 default_features = false
 
 [features]
+rustc-dep-of-std = ["compiler_builtins", "core", "alloc"]
 default = ["std", "elf32", "elf64", "mach32", "mach64", "pe32", "pe64", "archive", "endian_fd"]
-std = ["alloc", "scroll/std"]
-alloc = ["scroll/derive", "log"]
-endian_fd = ["alloc"]
+std = ["alloc_user", "scroll/std"]
+alloc_user = []
+endian_fd = ["alloc_user", "scroll/derive"]
 elf32 = []
 elf64 = []
-# for now we will require mach and pe to be alloc + endian_fd
-mach32 = ["alloc", "endian_fd"]
-mach64 = ["alloc", "endian_fd"]
-pe32 = ["alloc", "endian_fd"]
-pe64 = ["alloc", "endian_fd"]
-archive = ["alloc"]
+# for now we will require mach and pe to be alloc_user + endian_fd
+mach32 = ["alloc_user", "endian_fd"]
+mach64 = ["alloc_user", "endian_fd"]
+pe32 = ["alloc_user", "endian_fd"]
+pe64 = ["alloc_user", "endian_fd"]
+archive = ["alloc_user"]
 
 [badges.travis-ci]
 branch = "master"

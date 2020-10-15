@@ -6,7 +6,7 @@ macro_rules! elf_dyn {
         #[repr(C)]
         #[derive(Copy, Clone, PartialEq, Default)]
         #[cfg_attr(
-            feature = "alloc",
+            feature = "alloc_user",
             derive(scroll::Pread, scroll::Pwrite, scroll::SizeWith)
         )]
         /// An entry in the dynamic array
@@ -448,7 +448,6 @@ if_alloc! {
         }
 
         pub fn get_libraries<'a>(&self, strtab: &Strtab<'a>) -> Vec<&'a str> {
-            use log::warn;
             let count = self.info.needed_count;
             let mut needed = Vec::with_capacity(count);
             for dynamic in &self.dyns {

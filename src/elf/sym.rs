@@ -264,7 +264,7 @@ macro_rules! elf_sym_std_impl {
     };
 }
 
-#[cfg(feature = "alloc")]
+#[cfg(feature = "alloc_user")]
 use scroll::{Pread, Pwrite, SizeWith};
 
 pub mod sym32 {
@@ -272,7 +272,7 @@ pub mod sym32 {
 
     #[repr(C)]
     #[derive(Clone, Copy, PartialEq, Default)]
-    #[cfg_attr(feature = "alloc", derive(Pread, Pwrite, SizeWith))]
+    #[cfg_attr(feature = "alloc_user", derive(Pread, Pwrite, SizeWith))]
     /// 32-bit Sym - used for both static and dynamic symbol information in a binary
     pub struct Sym {
         /// Symbol name (string tbl index)
@@ -302,7 +302,7 @@ pub mod sym64 {
 
     #[repr(C)]
     #[derive(Clone, Copy, PartialEq, Default)]
-    #[cfg_attr(feature = "alloc", derive(Pread, Pwrite, SizeWith))]
+    #[cfg_attr(feature = "alloc_user", derive(Pread, Pwrite, SizeWith))]
     /// 64-bit Sym - used for both static and dynamic symbol information in a binary
     pub struct Sym {
         /// Symbol name (string tbl index)
@@ -328,9 +328,9 @@ pub mod sym64 {
 }
 
 use crate::container::{Container, Ctx};
-#[cfg(feature = "alloc")]
+#[cfg(feature = "alloc_user")]
 use crate::error::Result;
-#[cfg(feature = "alloc")]
+#[cfg(feature = "alloc_user")]
 use alloc::vec::Vec;
 use core::fmt::{self, Debug};
 use core::result;

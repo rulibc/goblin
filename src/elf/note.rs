@@ -2,7 +2,7 @@
 
 #[cfg(feature = "log")]
 use log::debug;
-#[cfg(feature = "alloc")]
+#[cfg(feature = "alloc_user")]
 use scroll::{IOread, IOwrite, Pread, Pwrite, SizeWith};
 
 /// ABI information.
@@ -55,7 +55,7 @@ pub const NT_SIGINFO: u32 = 0x5349_4749;
 pub const NT_FILE: u32 = 0x4649_4c45;
 
 #[derive(Clone, Copy, Debug)]
-#[cfg_attr(feature = "alloc", derive(Pread, Pwrite, IOread, IOwrite, SizeWith))]
+#[cfg_attr(feature = "alloc_user", derive(Pread, Pwrite, IOread, IOwrite, SizeWith))]
 #[repr(C)]
 /// Note section contents. Each entry in the note section begins with a header
 /// of a fixed form.
@@ -69,7 +69,7 @@ pub struct Nhdr32 {
 }
 
 #[derive(Clone, Copy, Debug)]
-#[cfg_attr(feature = "alloc", derive(Pread, Pwrite, IOread, IOwrite, SizeWith))]
+#[cfg_attr(feature = "alloc_user", derive(Pread, Pwrite, IOread, IOwrite, SizeWith))]
 #[repr(C)]
 /// Note section contents. Each entry in the note section begins with a header
 /// of a fixed form.

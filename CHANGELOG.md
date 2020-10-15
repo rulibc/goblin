@@ -149,7 +149,7 @@ pe: fix reexport dll and ordinal, thanks @lzybkr: d62889f469846af0cceb789b415f1e
 ### Added
  - mach: add constants for `n_types` when `N_STAB` field is being used, thanks @jrmuizel! https://github.com/m4b/goblin/pull/85
  - elf: implement support for compressed headers, thanks @rocallahan! https://github.com/m4b/goblin/pull/83
- - new nightly "alloc" feature: allows compiling the goblin parser on nightly with extern crate + no_std, thanks @philipc! https://github.com/m4b/goblin/pull/77
+ - new nightly "alloc_user" feature: allows compiling the goblin parser on nightly with extern crate + no_std, thanks @philipc! https://github.com/m4b/goblin/pull/77
  - mach.segments: do not panic on bad internal data bounds: https://github.com/m4b/goblin/issues/74
  - mach: correctly add weak dylibs to import libs: https://github.com/m4b/goblin/issues/73
 

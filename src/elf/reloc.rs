@@ -70,11 +70,11 @@ include!("constants_relocation.rs");
 macro_rules! elf_reloc {
     ($size:ident, $isize:ty) => {
         use core::fmt;
-        #[cfg(feature = "alloc")]
+        #[cfg(feature = "alloc_user")]
         use scroll::{Pread, Pwrite, SizeWith};
         #[repr(C)]
         #[derive(Clone, Copy, PartialEq, Default)]
-        #[cfg_attr(feature = "alloc", derive(Pread, Pwrite, SizeWith))]
+        #[cfg_attr(feature = "alloc_user", derive(Pread, Pwrite, SizeWith))]
         /// Relocation with an explicit addend
         pub struct Rela {
             /// Address
@@ -86,7 +86,7 @@ macro_rules! elf_reloc {
         }
         #[repr(C)]
         #[derive(Clone, PartialEq, Default)]
-        #[cfg_attr(feature = "alloc", derive(Pread, Pwrite, SizeWith))]
+        #[cfg_attr(feature = "alloc_user", derive(Pread, Pwrite, SizeWith))]
         /// Relocation without an addend
         pub struct Rel {
             /// address
