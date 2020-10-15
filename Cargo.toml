@@ -34,8 +34,7 @@ alloc = {version = "1.0", optional = true, package = "rustc-std-workspace-alloc"
 plain = "0.2.3"
 
 [dependencies.log]
-version = "0.4"
-default-features = false
+version = "0.4.11"
 optional = true
 
 [dependencies.scroll]
@@ -46,8 +45,8 @@ default_features = false
 rustc-dep-of-std = ["compiler_builtins", "core", "alloc"]
 default = ["std", "elf32", "elf64", "mach32", "mach64", "pe32", "pe64", "archive", "endian_fd"]
 std = ["alloc_user", "scroll/std"]
-alloc_user = []
-endian_fd = ["alloc_user", "scroll/derive"]
+alloc_user = ["scroll/derive", "log"]
+endian_fd = ["alloc_user"]
 elf32 = []
 elf64 = []
 # for now we will require mach and pe to be alloc_user + endian_fd

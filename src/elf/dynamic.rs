@@ -448,6 +448,7 @@ if_alloc! {
         }
 
         pub fn get_libraries<'a>(&self, strtab: &Strtab<'a>) -> Vec<&'a str> {
+            use log::warn;
             let count = self.info.needed_count;
             let mut needed = Vec::with_capacity(count);
             for dynamic in &self.dyns {
